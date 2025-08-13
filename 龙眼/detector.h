@@ -6,6 +6,8 @@
 class detecor
 {
 public:
+	detecor();
+
 	void set_img_path(std::string& path);
 
 	void run();

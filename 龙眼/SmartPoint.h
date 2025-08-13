@@ -5,19 +5,26 @@ class SmartPoint
 {
 private:
 	T* ptr;
+	//void (*deleter)(T*);
 public:
 	T* operator->()
 	{
 		return ptr;
 	}
 
-	SmartPoint(T* p = nullptr)
-		:ptr(p)
+	void set_ptr(T* p)
+	{
+		ptr = p;
+	}
+
+	SmartPoint(T* p = nullptr/*, void (*d)(T*) = [](T* p) { delete p; }*/)
+		: ptr(p), deleter(d)
 	{
 		
 	}
 	~SmartPoint()
 	{
-		delete ptr;
+		if (ptr) 
+			deleter(ptr);
 	}
 };

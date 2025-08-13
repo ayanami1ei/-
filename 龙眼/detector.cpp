@@ -6,7 +6,7 @@
 
 
 
-class Ipml
+class detecor::Ipml
 {
 private:
     std::vector<cv::Mat>images;
@@ -133,10 +133,15 @@ public:
 
 void detecor::set_img_path(std::string& path)
 {
-    pipml.set_img_path(path);
+    pipml->set_img_path(path);
 }
 
 void detecor::run()
 {
+    pipml->run();
+}
 
+detecor::detecor()
+{
+    pipml.set_ptr(new Ipml);
 }
